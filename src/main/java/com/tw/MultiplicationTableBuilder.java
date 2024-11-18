@@ -33,14 +33,19 @@ public class MultiplicationTableBuilder {
     private String generateMultiplicationTable(int start, int end) {
         StringBuilder multiplicationTable = new StringBuilder();
         for (int i = start; i <= end; i++) {
-            generateMultiplicationTableForCurrentNumber();
+            generateMultiplicationTableForCurrentNumber(multiplicationTable, start, i);
             addLineBreak();
         }
         return multiplicationTable.toString();
     }
 
-    private void generateMultiplicationTableForCurrentNumber() {
-        System.out.println("generate multiplication table for current number");
+    private void generateMultiplicationTableForCurrentNumber(StringBuilder multiplicationTable, int start, int currentNumber) {
+        for (int j = start; j <= currentNumber; j++) {
+            multiplicationTable.append(j).append("*").append(currentNumber).append("=").append(currentNumber * j);
+            if (j != currentNumber) {
+                multiplicationTable.append(" ");
+            }
+        }
     }
 
     private void addLineBreak() {
