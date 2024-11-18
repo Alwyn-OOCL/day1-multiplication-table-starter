@@ -6,11 +6,6 @@ public class MultiplicationTableBuilder {
         MultiplicationTableBuilder builder = new MultiplicationTableBuilder();
         int start = 2;
         int end = 4;
-//        String multiplicationTable = builder.printMultiplicationTable(start, end);
-
-//        System.out.println(multiplicationTable);
-//        System.out.println(builder.checkIfStartNumberAndEndNumberAreLegal(1, 4));
-//        System.out.println(builder.checkIfStartNumberLessThanOrEqualsToEndNumber(4, 4));
         System.out.println(builder.printMultiplicationTable(start, end));
     }
 
@@ -34,7 +29,7 @@ public class MultiplicationTableBuilder {
         StringBuilder multiplicationTable = new StringBuilder();
         for (int i = start; i <= end; i++) {
             generateMultiplicationTableForCurrentNumber(multiplicationTable, start, i);
-            addLineBreak();
+            addLineBreaks(multiplicationTable);
         }
         return multiplicationTable.toString();
     }
@@ -48,8 +43,8 @@ public class MultiplicationTableBuilder {
         }
     }
 
-    private void addLineBreak() {
-        System.out.println("line break");
+    private void addLineBreaks(StringBuilder multiplicationTable) {
+        multiplicationTable.append(System.lineSeparator());
     }
 
 }
