@@ -1,6 +1,12 @@
 package com.tw;
 
+import java.util.stream.IntStream;
+
 public class MultiplicationTableBuilder {
+
+    private static final String STAR = "*";
+    private static final String EQUAL = "=";
+    private static final String SPACE = " ";
 
     public static void main(String[] args) {
         MultiplicationTableBuilder builder = new MultiplicationTableBuilder();
@@ -27,20 +33,20 @@ public class MultiplicationTableBuilder {
 
     private String generateMultiplicationTable(int start, int end) {
         StringBuilder multiplicationTable = new StringBuilder();
-        for (int i = start; i <= end; i++) {
+        IntStream.rangeClosed(start, end).forEach(i -> {
             generateMultiplicationTableForCurrentNumber(multiplicationTable, start, i);
             addLineBreaks(multiplicationTable);
-        }
+        });
         return multiplicationTable.toString();
     }
 
     private void generateMultiplicationTableForCurrentNumber(StringBuilder multiplicationTable, int start, int currentNumber) {
-        for (int j = start; j <= currentNumber; j++) {
-            multiplicationTable.append(j).append("*").append(currentNumber).append("=").append(currentNumber * j);
+        IntStream.rangeClosed(start, currentNumber).forEach(j -> {
+            multiplicationTable.append(j).append(STAR).append(currentNumber).append(EQUAL).append(currentNumber * j);
             if (j != currentNumber) {
-                multiplicationTable.append(" ");
+                multiplicationTable.append(SPACE);
             }
-        }
+        });
     }
 
     private void addLineBreaks(StringBuilder multiplicationTable) {
