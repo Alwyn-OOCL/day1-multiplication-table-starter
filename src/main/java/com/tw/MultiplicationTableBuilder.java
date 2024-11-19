@@ -33,6 +33,8 @@ public class MultiplicationTableBuilder {
 
     private String generateMultiplicationTable(int start, int end) {
         StringBuilder multiplicationTable = new StringBuilder();
+        //todo 0 rename parameter
+        //     1 use map instead of forEach
         IntStream.rangeClosed(start, end).forEach(i -> {
             generateMultiplicationTableForCurrentNumber(multiplicationTable, start, i);
             addLineBreaks(multiplicationTable);
@@ -41,6 +43,7 @@ public class MultiplicationTableBuilder {
     }
 
     private void generateMultiplicationTableForCurrentNumber(StringBuilder multiplicationTable, int start, int currentNumber) {
+        //todo rename parameter
         IntStream.rangeClosed(start, currentNumber).forEach(j -> {
             multiplicationTable.append(j).append(STAR).append(currentNumber).append(EQUAL).append(currentNumber * j);
             if (j != currentNumber) {
@@ -49,6 +52,7 @@ public class MultiplicationTableBuilder {
         });
     }
 
+    //todo rename parameter
     private void addLineBreaks(StringBuilder multiplicationTable) {
         multiplicationTable.append(System.lineSeparator());
     }
